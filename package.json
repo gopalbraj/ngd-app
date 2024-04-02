@@ -1,0 +1,12 @@
+{
+    "name": "your-project",
+    "version": "1.0.0",
+    "description": "A project to demonstrate Puppeteer with Lighthouse in Jenkins.",
+    "scripts": {
+        "audit": "node scripts/puppeteer-lighthouse.js"
+    },
+    "dependencies": {
+        "puppeteer": "^5.5.0",
+        "lighthouse": "^7.0.0"
+    }
+}

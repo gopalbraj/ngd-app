@@ -1,0 +1,35 @@
+// .jenkins/Jenkinsfile
+
+pipeline {
+    agent any
+
+    tools {
+        nodejs "NodeJS" // This should match the name of the Node.js tool configuration in Jenkins.
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                dir('your-project') {
+                    sh 'npm install'
+                }
+            }
+        }
+        
+        stage('Run Lighthouse Audit') {
+            steps {
+                dir('your-project') {
+                    sh 'node scripts/puppeteer-lighthouse.js'
+                    // Optionally archive the generated report
+                    archiveArtifacts artifacts: 'lighthouse_report.json', onlyIfSuccessful: true
+                }
+            }
+        }
+    }
+}
