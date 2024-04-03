@@ -19,10 +19,10 @@ pipeline {
         }
         stage('Performance Tests') {
   agent {
-    label 'master'
+    label 'main'
   }
   when {
-    branch 'master'
+    branch 'main'
   }
   steps {
     deleteDir()
